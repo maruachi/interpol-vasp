@@ -24,6 +24,6 @@ def interpolation(p1, p2, N, tag, cellparameters, spe, nums):
 	dis = p2 - p1
 	q = dis/(N+1)
 	for i in range(N+2):
-		makePOSCAR(tag+str(i)+ ".in", p1+q*i, cellparameters, spe, nums)
+		makePOSCAR(tag+str(i)+ ".vasp", p1+q*i, cellparameters, spe, nums)
 	for i in range(1, N+2):
-		makePOSCAR(tag+"-"+str(i)+ ".in", p1-q*i, cellparameters, spe, nums)
+		makePOSCAR(tag+"-"+str(i)+ ".vasp", p1-q*i, cellparameters, spe, nums)
