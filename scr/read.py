@@ -13,7 +13,7 @@ def read_head(filename):
 			v = re.findall("[+-]?[0-9]+\.[0-9]+", line)
 			v = [float(x) for x in v]
 			cellparameters.append(v)
-
+		
 		line = f.readline()
 		spe = re.findall("[A-Za-z]+", line)
 		line = f.readline()
@@ -28,7 +28,13 @@ def read_atoms(filename):
 
 		for line in f:
 			v = re.findall("[+-]?[0-9]+\.[0-9]+", line)
-			v = [float(x) for x in v]
+			v = [convert_plus(float(x)) for x in v]
 			atoms.append(v)
 	
 	return np.array(atoms)
+
+def convert_plus(x):
+	if x < 0:
+		return 1 + x
+	else:
+		return x
