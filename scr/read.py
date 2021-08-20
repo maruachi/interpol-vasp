@@ -28,7 +28,7 @@ def read_atoms(filename):
 
 		for line in f:
 			v = re.findall("[+-]?[0-9]+\.[0-9]+", line)
-			v = [convert_plus(float(x)) for x in v]
+			v = [isOnBoundary(convert_plus(float(x))) for x in v]
 			atoms.append(v)
 	
 	return np.array(atoms)
@@ -38,3 +38,10 @@ def convert_plus(x):
 		return 1 + x
 	else:
 		return x
+
+def isOnBoundary(x):
+	tol = 0.001
+	if abs(x - 1) < tol:
+		return 0
+	elif abs(1 - x) < tol:
+		return 0 
