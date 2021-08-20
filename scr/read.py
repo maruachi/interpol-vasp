@@ -39,3 +39,5 @@ def isOnBoundary(x):
 		return 0.
 	elif abs(1 - x) < tol:
 		return 0.
+	else:
+		return x
